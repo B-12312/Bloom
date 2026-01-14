@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bloom</title>
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+
+    <style>
+        .main{
+            max-width: 100%;
+        }
+        .bg {
+            display: flex;
+            justify-content: space-between;
+            border: 2px;
+        
+            height: 2.5cm;
+            background-color: black;
+        }
+
+        .bloom {
+
+            font-size: 35px;
+            font-family: 'Pacifico';
+            color: aliceblue;
+            margin-left: 3cm;
+            margin-top: 19px;
+
+        }
+
+        .list {
+            display: inline flex;
+            justify-content: space-between;
+            font-size: 20px;
+            color: rgb(245, 247, 247);
+            list-style: none;
+            margin-right: 4cm;
+            margin-top: 0.6cm;
+
+        }
+
+        .header {
+            /* border: 5cm; */ /* This large border was likely for testing */
+            background-color: lightcyan;
+            /* height: 9cm; */ /* Removing fixed height to allow content to expand */
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start; /* Aligns items to the top, which is correct */
+            padding: 1rem;
+            gap: 2rem; /* Adds space between the columns */
+        }
+
+        .header-column {
+            flex: 1; /* Allows columns to grow and shrink */
+            min-width: 300px; /* Prevents columns from getting too narrow */
+        }
+
+        .img {
+            /* Removed float and margins to allow flexbox to control positioning */
+            flex-shrink: 0; /* Prevents the image from shrinking on smaller screens */
+            display: flex;
+            justify-content: flex-end; /* Pushes image to the right side of its column */
+        }
+
+        .p1 {
+            font-size: 25px;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            text-align: left;
+            /* padding-left: 2cm; */
+            padding-top: 1cm;
+        }
+
+        .header-text {
+            font-size: 20px;
+
+        }
+
+        summary {
+            cursor: pointer;
+            padding: 8px;
+            font-size: 10px;
+            background-color: goldenrod;
+            display: inline-block;
+            border: none;
+            /* width: 100px; */
+            /* height: 30px; */
+            /* padding-left: 1cm; */
+        }
+
+        .hidden {
+            display: none;
+            /* Removed fixed height and large border to allow content to flow naturally */
+            margin-top: 20px;
+        }
+
+        #loadMore:checked~.hidden {
+            display: block;
+             padding-bottom: 1cm;
+        }
+
+        /* Specific styling for the "Load More" button */
+        .load-more-button {
+            cursor: pointer;
+            display: inline-block;
+            padding: 8px 12px;
+            background: #28a745;
+            color: white;
+            border-radius: 5px;
+            /* Removed problematic margin-top, added a reasonable one for spacing */
+            margin-top: 1rem;
+        }
+        /* Hide the "Load More" button when the checkbox is checked (content is shown) */
+        #loadMore:checked + .load-more-button {
+            display: none;
+        }
+
+        .p2 {
+            font-size: 30px;
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
+
+
+        }
+
+        .image {
+            display: inline-flex;
+            justify-content: space-between;
+            gap: 70px;
+        }
+
+        .align {
+            display: inline-flex;
+            justify-content: space-between;
+
+        }
+
+        .box1 {
+            border: 2px;
+            width: 350px;
+            height: 200px;
+            background-color: white;
+            margin-left: 1.2cm;
+
+        }
+
+        .box2 {
+            border: 2px;
+            width: 350px;
+            height: 200px;
+            background-color: white;
+            margin-left: 2.7cm;
+
+        }
+
+        .box3 {
+
+            border: 2px;
+            width: 350px;
+            height: 200px;
+            background-color: white;
+            margin-left: 2.9cm;
+
+        }
+
+        .footer {
+            border: 2px;
+            height: 8cm;
+            background-color: black;
+            color: white;
+            margin-top: 1cm;
+        }
+
+        .latest {
+            padding-left: 119px;
+            padding-top: 1cm;
+            font-size: 25px;
+            color: aliceblue;
+        }
+
+        .c1 {
+            padding-left: 119px;
+            font: size 18px;
+            
+        }
+
+        .about {
+            padding-left: 550px;
+           margin-top: -6.1cm;
+            font-size: 22px;
+            color: aliceblue;
+
+        }
+        .c2{
+            font-size: 16px;
+        }
+        .stay{
+           padding-left: 1000px;
+           margin-top: -4.8cm;
+           color:white;
+           font-size: 22px;
+        }
+        
+        /* Responsive styles for smaller screens */
+        @media (max-width: 992px) {
+            .header {
+                flex-direction: column; /* Stack header items vertically */
+                align-items: center;   /* Center items when stacked */
+            }
+
+            .header-text {
+                text-align: center; /* Center-align the text */
+                margin-bottom: 1.5rem; /* Add space below the text block */
+            }
+
+            .img img {
+                max-width: 100%; /* Ensure image scales down */
+                height: auto;    /* Maintain aspect ratio */
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main">
+    <div class="bg">
+        <div class="bloom">Bloom
+        </div>
+
+        <div class="list">
+           <a href="flower3.jpg" style="color: aliceblue;text-decoration: none;"><ul>Home</ul></a>
+           <a href="" style="color: aliceblue;text-decoration: none;"><ul>About Us</ul></a>
+           <a href=""style="color: aliceblue;text-decoration: none;"><ul>Service</ul></a>
+            <a href=""style="color: aliceblue;text-decoration: none;"><ul>Portfolio</ul></a>
+            <a href=""style="color: aliceblue;text-decoration: none;"><ul>Contact Us</ul></a>
+        </div>
+    </div>
+    <div class="header">
+        <div class="header-column header-text">
+            <div class="p1">Bloom Life</div>
+            <div>
+                bloom refers to the period during which plants produce flowers.
+                This phase is crucial for plant reproduction, as flowers often
+                contain the reproductive organs that facilitate pollination and
+                seed formation. Blooming is not only a biological process but a-
+                lso a visual and ecological event, signaling seasonal change and
+                supporting ecosystems.
+            </div>
+            <input type="checkbox" id="loadMore" hidden>
+            <label for="loadMore" class="load-more-button">Load More</label>
+            <div class="hidden">
+                <p>
+                    Blooming varies among species and is influenced by environmental factors such as temperature,
+                    light, and rainfall. For example, many plants bloom in spring as the weather warms, while others
+                    may bloom in summer, fall, or even in response to specific triggers like drought or fire.
+                    The blooming of plants plays a key role in:
+                    Pollination, attracting bees, butterflies, birds, and other pollinators.
+                    Biodiversity, as flowering seasons support a wide range of life forms.
+                    Aesthetics, enriching natural landscapes with color and fragrance.
+                    From cherry blossoms in Japan to wildflower super blooms in deserts, the phenomenon of bloom
+                    connects people to nature and inspires cultural traditions and scientific inquiry alike.
+                </p>
+            </div>
+        </div>
+        <div class="header-column img">
+            <img src="bloom.jpg" alt="" width="500px" height="265px">
+        </div>
+
+
+    </div><br><br>
+    <div class="p2"><b>The is a Heading</b>
+    </div>
+
+    <div class="image">
+        <ul> <img src="flower1.jpeg" alt="" width="350px" height="200px"></ul>
+        <ul> <img src="flower2.jpeg" alt="" width="350px" height="200px"></ul>
+        <ul> <img src="flower3.jpg" alt="" width="350px" height="200px"></ul>
+
+    </div>
+    <div class="align">
+        <div class="box1">
+            <b>
+                This image shows a breathtaking flower field bathed in the warm light of a setting sun. Rows of colorful
+                blooms—pinks,
+                purples, whites, and reds—stretch into the horizon, creating a vibrant, symmetrical pattern. The sky is
+                painted in hues
+                of orange, yellow, and purple, with soft, wispy clouds adding to the serene and dreamy atmosphere. In
+                the distance,
+                gentle hills and a line of trees frame the peaceful countryside scene.</b><br><br>
+            <button style="background-color: #28a745;  border: none;"> learn more</button>
+
+
+        </div>
+
+        <div class="box2">
+            <b>This image captures a vibrant wildflower meadow at sunset. A colorful mix of daisies, cosmos, and
+                other blossoms in shades of yellow, pink, purple, blue, and white fills the foreground. The golden sun
+                is low on
+                the horizon, casting a warm, glowing light across the landscape. Soft clouds drift through a pastel sky,
+                enhancing
+                the serene and dreamy atmosphere of this peaceful natural scene.</b><br><br><br>
+            <button style="background-color: #28a745; border: none;"> learn more</button>
+
+
+        </div>
+        <div class="box3">
+            <b>This image showcases a stunning flower field at sunset, filled with vibrant pink, red, and purple
+                wildflowers.
+                The golden sun is just above the horizon, casting a warm glow across the landscape. Dramatic clouds
+                tinged with
+                orange and purple hues add depth and emotion to the sky, while the dark silhouettes of distant trees and
+                hills
+                frame the colorful foreground. The scene exudes peace, beauty, and the gentle magic of nature at day's
+                end.</b><br><br>
+            <button style="background-color: #28a745; border: none;"> learn more</button>
+
+
+
+        </div>
+    </div>
+    <div class="footer"><br>
+        <div class="latest">
+            Latest Post
+        </div><br>
+        <div class="c1">
+            Rows of colorful blooms—pinks, <br>
+            <li style="font-size: 14px;">purples, whites, and reds—stretch into the horizon,<br> creating a vibrant,
+                symmetrical pattern.
+            </li>
+
+
+        </div><br>
+        <div class="c1">
+            Rows of colorful blooms—pinks, <br>
+            <li style="font-size: 14px;">purples, whites, and reds—stretch into the horizon,<br> creating a vibrant,
+                symmetrical pattern.
+            </li>
+
+
+        </div><br>
+        <div class="c1">
+            Rows of colorful blooms—pinks, <br>
+            <li style="font-size: 14px;">purples, whites, and reds—stretch into the horizon,<br> creating a vibrant,
+                symmetrical pattern.
+            </li>
+
+
+        </div>
+        <div class="about">
+            About <br><br>
+            <div class="c2">
+                This image captures a vibrant wildflower <br> meadow at sunset. A colorful mix of dai- <br>sies, cosmos, and other blossoms in shades <br> of yellow, pink, purple, blue, and white fills <br> the foreground. The golden sun is low on the <br> horizon, casting a warm, glowing light across  <br>the landscape.
+            </div>
+        </div>
+        <div class="stay">
+            Stay Connected
+            <br><br>
+            
+                <li>Facebook</li>
+                <li>Twitter</li>
+                <li>Rss</li>
+                <li>Google</li>
+            
+        </div>
+
+
+    </div>
+    <footer style="text-align: center;">
+        &COPY;2013 All rights reserved Bloom web Design
+    </footer>
+    </div>
+</body>
+
+</html>
